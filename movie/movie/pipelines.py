@@ -5,8 +5,11 @@
 # Don't forget to add your pipeline to the ITEM_PIPELINES setting
 # See: https://doc.scrapy.org/en/latest/topics/item-pipeline.html
 import xlwt
+import movie.settings
+import pymongo
 
-class MoviePipeline(object):
+# 保存到Excel文件
+class MovieExcelPipeline(object):
 
     def __init__(self):
         self.num = 0
@@ -44,6 +47,7 @@ class MoviePipeline(object):
         # 保存到Excel文件
         self.meiju_info.save('E:\\scrapyfiles\\movie\\meijutop100.xls')
 
+        # return item
 
     # 设置单元格样式
     def set_style(self, name, height, bold=False):
@@ -58,3 +62,25 @@ class MoviePipeline(object):
         style.font = font
 
         return style
+
+# 保存到MongoDB数据库中
+class MovieMongoDbPipeline(object):
+    def __init__(self):
+        host = movie.settings.MONGODB_HOST
+        port = movie.settings.MONGODB_PORT
+        dbname = movie.settings.MONGODB_DBNAME
+        tabname = movie.settings.MONGODB_SHEETNAME
+
+        # 创建MONGODB数据库链接
+        client = pymongo.MongoClient(host=host, port=port)
+        # 指定数据库
+        mydb = client[dbname]
+        # 存放数据的数据库表名
+        self.table_name = mydb[tabname]
+
+    def process_item(self, item, spider):
+        data = dict(item)
+        self.table_name.insert(data)
+        # return item
+
+

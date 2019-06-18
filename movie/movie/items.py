@@ -10,9 +10,13 @@ import scrapy
 
 class MovieItem(scrapy.Item):
     # define the fields for your item here like:
-    # name = scrapy.Field()
+    # 电影名称
     name = scrapy.Field()
+    # 状态
     statu = scrapy.Field()
+    # 小分类
     stype = scrapy.Field()
+    # 电视台
     tv = scrapy.Field()
+    # 更新时间
     update_time = scrapy.Field()

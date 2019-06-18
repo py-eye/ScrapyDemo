@@ -9,15 +9,26 @@
 #     https://doc.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://doc.scrapy.org/en/latest/topics/spider-middleware.html
 
+# 项目名称
 BOT_NAME = 'movie'
 
+# 爬虫应用路径
 SPIDER_MODULES = ['movie.spiders']
 NEWSPIDER_MODULE = 'movie.spiders'
-ITEM_PIPELINES = {'movie.pipelines.MoviePipeline':100}
+
+# ITEM_PIPELINES = {'movie.pipelines.MovieExcelPipeline':100}
+ITEM_PIPELINES = {'movie.pipelines.MovieMongoDbPipeline':100}
+
+# mongodb config
+MONGODB_HOST = "127.0.0.1"
+MONGODB_PORT = 27017
+MONGODB_DBNAME = "scrapy_demo"
+MONGODB_SHEETNAME = "meiju_info"
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'movie (+http://www.yourdomain.com)'
 
+# 是否遵循爬虫协议
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = True
 
@@ -33,6 +44,7 @@ ROBOTSTXT_OBEY = True
 #CONCURRENT_REQUESTS_PER_DOMAIN = 16
 #CONCURRENT_REQUESTS_PER_IP = 16
 
+# 是否支持cookie，cookiejar进行操作cookie，默认开启
 # Disable cookies (enabled by default)
 #COOKIES_ENABLED = False
 
