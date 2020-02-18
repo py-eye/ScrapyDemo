@@ -31,7 +31,7 @@ MONGODB_PORT = 27017
 MONGODB_DBNAME = "scrapy_demo"
 MONGODB_SHEETNAME = "images"
 
-IMAGES_STORE = "E:\scrapyfiles\images360"
+IMAGES_STORE = "D:\download\scrapyfiles\images360"
 
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
