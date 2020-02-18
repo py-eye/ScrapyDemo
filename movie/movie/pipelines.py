@@ -45,7 +45,7 @@ class MovieExcelPipeline(object):
         self.num+=1
 
         # 保存到Excel文件
-        self.meiju_info.save('E:\\scrapyfiles\\movie\\meijutop100.xls')
+        self.meiju_info.save('D:\\download\\scrapyfiles\\movie\\meijutop100.xls')
 
         # return item
 

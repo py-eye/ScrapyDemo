@@ -16,8 +16,8 @@ BOT_NAME = 'movie'
 SPIDER_MODULES = ['movie.spiders']
 NEWSPIDER_MODULE = 'movie.spiders'
 
-# ITEM_PIPELINES = {'movie.pipelines.MovieExcelPipeline':100}
-ITEM_PIPELINES = {'movie.pipelines.MovieMongoDbPipeline':100}
+ITEM_PIPELINES = {'movie.pipelines.MovieExcelPipeline':100}
+# ITEM_PIPELINES = {'movie.pipelines.MovieMongoDbPipeline':100}
 
 # mongodb config
 MONGODB_HOST = "127.0.0.1"
