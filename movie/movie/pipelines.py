@@ -8,6 +8,7 @@ import xlwt
 import movie.settings
 import pymongo
 
+
 # 保存到Excel文件
 class MovieExcelPipeline(object):
 
@@ -33,7 +34,6 @@ class MovieExcelPipeline(object):
         self.sheet1.col(2).width = (27 * 367)
         self.sheet1.col(3).width = (13 * 367)
         self.sheet1.col(4).width = (13 * 367)
-
 
     def process_item(self, item, spider):
         self.sheet1.write(self.num + 1, 0, item['name'])
@@ -63,24 +63,23 @@ class MovieExcelPipeline(object):
 
         return style
 
+
 # 保存到MongoDB数据库中
 class MovieMongoDbPipeline(object):
     def __init__(self):
         host = movie.settings.MONGODB_HOST
         port = movie.settings.MONGODB_PORT
-        dbname = movie.settings.MONGODB_DBNAME
-        tabname = movie.settings.MONGODB_SHEETNAME
+        db_name = movie.settings.MONGODB_DBNAME
+        t_ame = movie.settings.MONGODB_SHEETNAME
 
         # 创建MONGODB数据库链接
         client = pymongo.MongoClient(host=host, port=port)
         # 指定数据库
-        mydb = client[dbname]
+        my_db = client[db_name]
         # 存放数据的数据库表名
-        self.table_name = mydb[tabname]
+        self.table_name = my_db[t_ame]
 
     def process_item(self, item, spider):
         data = dict(item)
         self.table_name.insert(data)
         # return item
-
-
