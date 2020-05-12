@@ -18,7 +18,6 @@ class ImagesSpider(Spider):
     # 爬虫启动之后，Engine就会从start_urls提取第一个url，然后将url构造成一个Request对象，交给调度器
     start_urls = ['http://images.so.com/']
 
-
     # parse()函数是在start_urls中的url请求成功以后，自动回调parse()函数
     def parse(self, response):
         # 解析response对象
@@ -30,7 +29,6 @@ class ImagesSpider(Spider):
             item['title'] = image.get('title')
             item['thumb'] = image.get('qhimg_thumb')
             yield item
-
 
     def start_requests(self):
         data = {'ch':'beauty', 'listtype':'new'}

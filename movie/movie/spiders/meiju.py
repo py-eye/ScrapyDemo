@@ -19,10 +19,9 @@ class MeijuSpider(scrapy.Spider):
             item['tv'] = each_movie.xpath('./span[@class="mjtv"]/text()').extract()[0]
             if len(each_movie.xpath('./div[2]/font/text()')):
                 item['update_time'] = \
-                each_movie.xpath('./div[2]/font/text()').extract()[0]
+                    each_movie.xpath('./div[2]/font/text()').extract()[0]
             else:
                 item['update_time'] = \
-                each_movie.xpath('./div[2]/text()').extract()[0]
+                    each_movie.xpath('./div[2]/text()').extract()[0]
 
             yield item
-
